@@ -1,0 +1,7 @@
+Provider=Microsoft.Jet.OLEDB.4.0;Data Source="D:\Projects\zbw_prog_advanced\SqlBatch\Contacts.mdb"
+SELECT * FROM Contact;
+SELECT * FROM Person;
+UPDATE Person
+SET Name = 'Modified'
+WHERE ID = 1;
+SELECT * FROM Person;
