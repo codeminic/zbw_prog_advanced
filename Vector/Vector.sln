@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "Vector.csproj", "{B8A46015-1E1E-4960-B434-005A625E48A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "Vector\Vector.csproj", "{B8A46015-1E1E-4960-B434-005A625E48A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorTests", "..\VectorTests\VectorTests.csproj", "{6D445DB9-CB95-43CF-8DD6-2D5E4CCE0E8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector.Tests", "Vector.Tests\Vector.Tests.csproj", "{6D445DB9-CB95-43CF-8DD6-2D5E4CCE0E8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
