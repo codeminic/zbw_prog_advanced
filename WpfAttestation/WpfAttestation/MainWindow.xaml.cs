@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Datasource;
 
 namespace WpfAttestation
 {
@@ -20,6 +21,9 @@ namespace WpfAttestation
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IList<Customer> _customers;
+        private int _currentCustomerIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +32,36 @@ namespace WpfAttestation
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            _customers = Datasource.Data.Load().Customers.CustomerList;
+            SetCurrentCustomer(_customers[0]);
+        }
+
+        private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_currentCustomerIndex > 0)
+            {
+                SetCurrentCustomer(_customers[_currentCustomerIndex - 1]);
+                _currentCustomerIndex--;
+            }
+        }
+
+        private void NextButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_currentCustomerIndex < _customers.Count - 1)
+            {
+                SetCurrentCustomer(_customers[_currentCustomerIndex + 1]);
+                _currentCustomerIndex++;
+            }
+        }
+
+        private void SetCurrentCustomer(Customer customer)
+        {
+            DataContext = customer;
         }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAttestation"
         mc:Ignorable="d"
+        Loaded="MainWindow_OnLoaded"
         Title="Customer" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -30,13 +31,13 @@
         <Label Grid.Row="5">Fax:</Label>
         <Label Grid.Row="6">Birthday:</Label>
 
-        <TextBox Grid.Row="0" Grid.Column="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1"/>
-        <TextBox Grid.Row="2" Grid.Column="1"/>
-        <TextBox Grid.Row="3" Grid.Column="1"/>
-        <TextBox Grid.Row="4" Grid.Column="1"/>
-        <TextBox Grid.Row="5" Grid.Column="1"/>
-        <DatePicker Grid.Row="6" Grid.Column="1"></DatePicker>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=CustomerID}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CompanyName}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=ContactName}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=ContactTitle}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Phone}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Fax}"/>
+        <DatePicker Grid.Row="6" Grid.Column="1" Text="{Binding Path=Birthday}"/>
 
         <Grid Grid.Row="8" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
@@ -47,10 +48,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0">
+            <Button Name="PreviousButton"  Grid.Column="0" Click="PreviousButton_OnClick">
                 &lt;
             </Button>
-            <Button Grid.Column="1">
+            <Button Name="NextButton" Grid.Column="1" Click="NextButton_OnClick">
                 &gt;
             </Button>
             <Button Name="CloseButton" Grid.Column="2" Click="CloseButton_OnClick">
