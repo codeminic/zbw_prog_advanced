@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfAttestation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAttestation"
+        mc:Ignorable="d"
+        Title="Customer" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0">CustomerID:</Label>
+        <Label Grid.Row="1">Companyname:</Label>
+        <Label Grid.Row="2">Contactname:</Label>
+        <Label Grid.Row="3">Contacttitle:</Label>
+        <Label Grid.Row="4">Phone:</Label>
+        <Label Grid.Row="5">Fax:</Label>
+        <Label Grid.Row="6">Birthday:</Label>
+
+        <TextBox Grid.Row="0" Grid.Column="1"/>
+        <TextBox Grid.Row="1" Grid.Column="1"/>
+        <TextBox Grid.Row="2" Grid.Column="1"/>
+        <TextBox Grid.Row="3" Grid.Column="1"/>
+        <TextBox Grid.Row="4" Grid.Column="1"/>
+        <TextBox Grid.Row="5" Grid.Column="1"/>
+        <DatePicker Grid.Row="6" Grid.Column="1"></DatePicker>
+
+        <Grid Grid.Row="8" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0">
+                &lt;
+            </Button>
+            <Button Grid.Column="1">
+                &gt;
+            </Button>
+            <Button Name="CloseButton" Grid.Column="2" Click="CloseButton_OnClick">
+                Cancel
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
