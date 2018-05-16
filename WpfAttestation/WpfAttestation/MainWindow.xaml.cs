@@ -21,7 +21,7 @@ namespace WpfAttestation
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IList<Customer> _customers;
+        private Data _data;
         private int _currentCustomerIndex = 0;
 
         public MainWindow()
@@ -31,37 +31,39 @@ namespace WpfAttestation
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
+            _data.Save();
             Application.Current.Shutdown();
-
         }
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            _customers = Datasource.Data.Load().Customers.CustomerList;
-            SetCurrentCustomer(_customers[0]);
+            _data = Datasource.Data.Load();
+            SetCurrentCustomer(0);
         }
 
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (_currentCustomerIndex > 0)
             {
-                SetCurrentCustomer(_customers[_currentCustomerIndex - 1]);
+                _data.Save();
+                SetCurrentCustomer(_currentCustomerIndex - 1);
                 _currentCustomerIndex--;
             }
         }
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_currentCustomerIndex < _customers.Count - 1)
+            if (_currentCustomerIndex < _data.Customers.CustomerList.Count - 1)
             {
-                SetCurrentCustomer(_customers[_currentCustomerIndex + 1]);
+                _data.Save();
+                SetCurrentCustomer(_currentCustomerIndex + 1);
                 _currentCustomerIndex++;
             }
         }
 
-        private void SetCurrentCustomer(Customer customer)
+        private void SetCurrentCustomer(int index)
         {
-            DataContext = customer;
+            DataContext = _data.Customers.CustomerList[index];
         }
     }
 }
