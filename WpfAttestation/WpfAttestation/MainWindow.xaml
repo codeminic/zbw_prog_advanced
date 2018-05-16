@@ -22,6 +22,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0">CustomerID:</Label>
         <Label Grid.Row="1">Companyname:</Label>
@@ -58,5 +59,20 @@
                 Cancel
             </Button>
         </Grid>
+
+        <ListBox Name="CustomerList" Grid.Column="2" Grid.RowSpan="9">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{Binding Path=ContactName}"/>
+                        <Label Grid.Row="1" Content="{Binding Path=Phone}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

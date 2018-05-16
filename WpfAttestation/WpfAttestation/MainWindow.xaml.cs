@@ -38,6 +38,7 @@ namespace WpfAttestation
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             _data = Datasource.Data.Load();
+            this.CustomerList.ItemsSource = _data.Customers.CustomerList;
             SetCurrentCustomer(0);
         }
 
