@@ -50,6 +50,7 @@ namespace WpfAttestation
         {
             var selectedCustomer = (Customer)e.AddedItems[0];
             SetCurrentCustomer(selectedCustomer);
+            _data.Save();
         }
     }
 }
