@@ -38,7 +38,7 @@
         <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Path=ContactTitle}"/>
         <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=Phone}"/>
         <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=Fax}"/>
-        <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday}"/>
+        <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday}" SelectedDateFormat="Short"/>
 
         <Button Grid.Row="8" Visibility="Hidden" Name="CloseButton" Grid.Column="0" Click="CloseButton_OnClick">
             Cancel
