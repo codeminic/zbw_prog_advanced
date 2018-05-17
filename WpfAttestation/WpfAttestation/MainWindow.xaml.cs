@@ -22,7 +22,6 @@ namespace WpfAttestation
     public partial class MainWindow : Window
     {
         private Data _data;
-        private int _currentCustomerIndex = 0;
 
         public MainWindow()
         {
@@ -37,34 +36,20 @@ namespace WpfAttestation
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            _data = Datasource.Data.Load();
+            _data = Data.Load();
             this.CustomerList.ItemsSource = _data.Customers.CustomerList;
-            SetCurrentCustomer(0);
+            SetCurrentCustomer(_data.Customers.CustomerList[0]);
+        }
+        
+        private void SetCurrentCustomer(Customer customer)
+        {
+            DataContext = customer;
         }
 
-        private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
+        private void CustomerList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (_currentCustomerIndex > 0)
-            {
-                _data.Save();
-                SetCurrentCustomer(_currentCustomerIndex - 1);
-                _currentCustomerIndex--;
-            }
-        }
-
-        private void NextButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (_currentCustomerIndex < _data.Customers.CustomerList.Count - 1)
-            {
-                _data.Save();
-                SetCurrentCustomer(_currentCustomerIndex + 1);
-                _currentCustomerIndex++;
-            }
-        }
-
-        private void SetCurrentCustomer(int index)
-        {
-            DataContext = _data.Customers.CustomerList[index];
+            var selectedCustomer = (Customer)e.AddedItems[0];
+            SetCurrentCustomer(selectedCustomer);
         }
     }
 }

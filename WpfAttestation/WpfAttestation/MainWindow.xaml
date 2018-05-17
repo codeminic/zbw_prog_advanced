@@ -24,43 +24,27 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0">CustomerID:</Label>
-        <Label Grid.Row="1">Companyname:</Label>
-        <Label Grid.Row="2">Contactname:</Label>
-        <Label Grid.Row="3">Contacttitle:</Label>
-        <Label Grid.Row="4">Phone:</Label>
-        <Label Grid.Row="5">Fax:</Label>
-        <Label Grid.Row="6">Birthday:</Label>
+        <Label Grid.Row="0" Grid.Column="1">CustomerID:</Label>
+        <Label Grid.Row="1" Grid.Column="1">Companyname:</Label>
+        <Label Grid.Row="2" Grid.Column="1">Contactname:</Label>
+        <Label Grid.Row="3" Grid.Column="1">Contacttitle:</Label>
+        <Label Grid.Row="4" Grid.Column="1">Phone:</Label>
+        <Label Grid.Row="5" Grid.Column="1">Fax:</Label>
+        <Label Grid.Row="6" Grid.Column="1">Birthday:</Label>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=CustomerID}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=CompanyName}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=ContactName}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=ContactTitle}"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Phone}"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Fax}"/>
-        <DatePicker Grid.Row="6" Grid.Column="1" Text="{Binding Path=Birthday}"/>
+        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=CustomerID}"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Path=CompanyName}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ContactName}"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Path=ContactTitle}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=Phone}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=Fax}"/>
+        <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday}"/>
 
-        <Grid Grid.Row="8" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Name="PreviousButton"  Grid.Column="0" Click="PreviousButton_OnClick">
-                &lt;
-            </Button>
-            <Button Name="NextButton" Grid.Column="1" Click="NextButton_OnClick">
-                &gt;
-            </Button>
-            <Button Name="CloseButton" Grid.Column="2" Click="CloseButton_OnClick">
-                Cancel
-            </Button>
-        </Grid>
+        <Button Grid.Row="8" Visibility="Hidden" Name="CloseButton" Grid.Column="0" Click="CloseButton_OnClick">
+            Cancel
+        </Button>
 
-        <ListBox Name="CustomerList" Grid.Column="2" Grid.RowSpan="9">
+        <ListBox Name="CustomerList" Grid.Column="0" Grid.RowSpan="9" SelectionChanged="CustomerList_OnSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
