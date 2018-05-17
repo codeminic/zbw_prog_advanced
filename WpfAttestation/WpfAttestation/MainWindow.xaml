@@ -24,10 +24,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="1">CustomerID:</Label>
-        <Label Grid.Row="1" Grid.Column="1">Companyname:</Label>
-        <Label Grid.Row="2" Grid.Column="1">Contactname:</Label>
-        <Label Grid.Row="3" Grid.Column="1">Contacttitle:</Label>
+        <Label Grid.Row="0" Grid.Column="1">Customer Id:</Label>
+        <Label Grid.Row="1" Grid.Column="1">Company Name:</Label>
+        <Label Grid.Row="2" Grid.Column="1">Contact Name:</Label>
+        <Label Grid.Row="3" Grid.Column="1">Contact Title:</Label>
         <Label Grid.Row="4" Grid.Column="1">Phone:</Label>
         <Label Grid.Row="5" Grid.Column="1">Fax:</Label>
         <Label Grid.Row="6" Grid.Column="1">Birthday:</Label>
@@ -52,8 +52,15 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="{Binding Path=ContactName}"/>
-                        <Label Grid.Row="1" Content="{Binding Path=Phone}"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Path=ContactName}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Content="|"></Label>
+                        <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=ContactTitle}"></Label>
+                        <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=Phone}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
