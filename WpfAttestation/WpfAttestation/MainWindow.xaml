@@ -52,8 +52,15 @@
         <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=Fax, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" SelectedDateFormat="Short"/>
 
-        <Button Grid.Row="8" Visibility="Hidden" Name="CloseButton" Grid.Column="0" Click="CloseButton_OnClick">
-            Cancel
+        <Button Grid.Row="7" Name="CloseButton" Grid.Column="1" Click="CloseButton_OnClick">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid Width="75" Height="75">
+                        <Ellipse Stroke="Red" StrokeThickness="2" Fill="GreenYellow"/>
+                        <Label Content="Cancel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
 
         <ListBox Name="CustomerList" Grid.Column="0" Grid.RowSpan="9" SelectionChanged="CustomerList_OnSelectionChanged">
