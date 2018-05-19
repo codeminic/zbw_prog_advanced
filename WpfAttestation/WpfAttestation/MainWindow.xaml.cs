@@ -27,7 +27,7 @@ namespace WpfAttestation
         {
             InitializeComponent();
         }
-
+            
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             _data.Save();

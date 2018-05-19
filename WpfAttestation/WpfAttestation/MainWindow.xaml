@@ -4,9 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAttestation"
+        xmlns:datasource="clr-namespace:Datasource;assembly=Datasource"
         mc:Ignorable="d"
         Loaded="MainWindow_OnLoaded"
         Title="Customer" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" 
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                            Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -32,13 +44,13 @@
         <Label Grid.Row="5" Grid.Column="1">Fax:</Label>
         <Label Grid.Row="6" Grid.Column="1">Birthday:</Label>
 
-        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=CustomerID}"/>
-        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Path=CompanyName}"/>
-        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ContactName}"/>
-        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Path=ContactTitle}"/>
-        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=Phone}"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=Fax}"/>
-        <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday}" SelectedDateFormat="Short"/>
+        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=CustomerID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Path=CompanyName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ContactName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Path=ContactTitle, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=Fax, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <DatePicker Grid.Row="6" Grid.Column="2" Text="{Binding Path=Birthday, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" SelectedDateFormat="Short"/>
 
         <Button Grid.Row="8" Visibility="Hidden" Name="CloseButton" Grid.Column="0" Click="CloseButton_OnClick">
             Cancel
@@ -46,7 +58,7 @@
 
         <ListBox Name="CustomerList" Grid.Column="0" Grid.RowSpan="9" SelectionChanged="CustomerList_OnSelectionChanged">
             <ListBox.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate DataType="datasource:Customer">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
