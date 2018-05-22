@@ -56,11 +56,23 @@
             <Button.Template>
                 <ControlTemplate>
                     <Grid Width="75" Height="75">
-                        <Ellipse Stroke="Red" StrokeThickness="2" Fill="GreenYellow"/>
+                        <Ellipse Name="RoundButton"  Stroke="ForestGreen" StrokeThickness="2" Fill="{TemplateBinding Background}"/>
                         <Label Content="Cancel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                 </ControlTemplate>
             </Button.Template>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="GreenYellow"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="DarkGreen"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
 
         <ListBox Name="CustomerList" Grid.Column="0" Grid.RowSpan="9" SelectionChanged="CustomerList_OnSelectionChanged">

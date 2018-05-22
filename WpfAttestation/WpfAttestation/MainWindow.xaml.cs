@@ -52,5 +52,6 @@ namespace WpfAttestation
             SetCurrentCustomer(selectedCustomer);
             _data.Save();
         }
+
     }
 }
