@@ -7,6 +7,8 @@ namespace _1._4_TypeConstraints {
     class MyClass<T> where T : MyClass<T> {
     }
 
-    // TODO: Neue Klasse erzeugen:
-    // class ...
+    class ThisClassRocks : MyClass<ThisClassRocks>
+    {
+
+    }
 }
